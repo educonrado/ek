@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+// import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+// import { Observable } from 'rxjs';
+// import { Item } from '@data/item';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ek';
+
+  // items$: Observable<Item[]>;
+  // constructor(firestore: Firestore) {
+  //   const colec = collection(firestore, 'items');
+  //   this.items$ = collectionData<any>(colec);
+  // }
+
+  // addItem(item: Item) {
+  //   this.items$.add(item);
+  // }
 }

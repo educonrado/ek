@@ -1,0 +1,149 @@
+<mat-stepper class="tipo-stepper" [orientation]="(stepperOrientation | async)!">
+  <mat-step [stepControl]="tipoFormGroup" label="Tipo">
+    <form [formGroup]="tipoFormGroup">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            <label>Seleccione el tipo:</label>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-radio-group class="rndGroup" formControlName="tipo">
+            <mat-radio-button
+              class="rdbtn full-width"
+              *ngFor="let categoria of categorias"
+              [value]="categoria.tipo"
+            >
+              {{ categoria.tipo }}
+              <!-- <img
+                class="imgMnProp"
+                [src]="categoria.icon"
+                alt="miniatura-tipo-propiedad"
+              /> -->
+            </mat-radio-button>
+          </mat-radio-group>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" matStepperNext>
+            Siguiente
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="detalleFormGroup" label="Detalles">
+    <form [formGroup]="detalleFormGroup">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            <label>Indique los detalles de la propiedad:</label>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>
+            <mat-form-field appearance="fill" class="full-width">
+              <mat-label>&Aacute;rea</mat-label>
+              <input
+                matInput
+                type="number"
+                formControlName="area"
+                placeholder="500 m2"
+                class="full-width"
+                required
+              />
+              <span matSuffix>&nbsp;m<sup>2</sup></span>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="fill" class="full-width">
+              <mat-label>Aval&uacute;o inicial</mat-label>
+              <input
+                matInput
+                type="number"
+                maxlength="10"
+                formControlName="avaluoInicial"
+                placeholder="100 000"
+                class="full-width"
+                required
+              />
+              <span matPrefix>$&nbsp;</span>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="fill" class="full-width">
+              <mat-label>Precio oportunidad</mat-label>
+              <input
+                matInput
+                type="number"
+                maxlength="2"
+                formControlName="precioOportunidad"
+                placeholder="50 000"
+                required
+              />
+              <span matPrefix>$&nbsp;</span>
+            </mat-form-field>
+          </p>
+          <mat-card>
+          <mat-label>Direcci&oacute;n</mat-label>
+          <p>
+            <mat-form-field appearance="fill" class="full-width">
+              <mat-label>Provincia</mat-label>
+              <!-- <input
+                matInput
+                type="number"
+                maxlength="2"
+                formControlName="precioOportunidad"
+                placeholder="50 000"
+                class="full-width"
+                required
+              /> -->
+              <mat-select formControlName="provincia">
+                <mat-option
+                  *ngFor="let provincia of provincias"
+                  [value]="provincia"
+                >
+                  {{ provincia }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </p>
+        </mat-card>
+        </mat-card-content>
+        <mat-card-actions>
+          <div>
+            <button mat-raised-button color="secondary" matStepperPrevious>
+              Atr&aacute;s
+            </button>
+            <button mat-raised-button color="primary" matStepperNext>
+              Siguiente
+            </button>
+          </div>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="thirdFormGroup" label="Fill out your phone number">
+    <form [formGroup]="thirdFormGroup">
+      <mat-form-field appearance="fill">
+        <mat-label>Phone number</mat-label>
+        <input
+          matInput
+          formControlName="thirdCtrl"
+          placeholder="Ex. 12345678"
+          required
+        />
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <p>You are now done.</p>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+    </div>
+  </mat-step>
+</mat-stepper>
